@@ -1,0 +1,36 @@
+\BOOKMARK [1][-]{section.1}{Planteamiento de un proyecto Business Intelligence o Big Data}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{Descripci\363n y planteamiento}{section.1}% 2
+\BOOKMARK [2][-]{subsection.1.2}{Gesti\363n del alcance}{section.1}% 3
+\BOOKMARK [3][-]{subsubsection.1.2.1}{\277Qu\351 impacto tiene sobre el alcance?}{subsection.1.2}% 4
+\BOOKMARK [3][-]{subsubsection.1.2.2}{\277C\363mo gestionar\355as las posibles discrepancias con los requisitos iniciales?}{subsection.1.2}% 5
+\BOOKMARK [3][-]{subsubsection.1.2.3}{\277Qu\351 habr\341 que hacer con la EDT \(Estructura de Desglose de Trabajo\)?}{subsection.1.2}% 6
+\BOOKMARK [2][-]{subsection.1.3}{Gesti\363n del Tiempo}{section.1}% 7
+\BOOKMARK [3][-]{subsubsection.1.3.1}{\277Qu\351 utilidad tiene determinar el camino cr\355tico cuando hay un cambio como el del enunciado?}{subsection.1.3}% 8
+\BOOKMARK [3][-]{subsubsection.1.3.2}{\277Qu\351 har\355as para recuperar el posible retraso?}{subsection.1.3}% 9
+\BOOKMARK [3][-]{subsubsection.1.3.3}{\277Qu\351 impacto sobre el riesgo supondr\355a paralelizar tareas o incrementar recursos como manera de amortiguar los posibles retrasos?}{subsection.1.3}% 10
+\BOOKMARK [2][-]{subsection.1.4}{Gesti\363n de los Costes}{section.1}% 11
+\BOOKMARK [3][-]{subsubsection.1.4.1}{\277Qu\351 impacto tendr\355a sobre los costes del proyecto y, de haberlo, qui\351n deber\355a asumirlo?}{subsection.1.4}% 12
+\BOOKMARK [3][-]{subsubsection.1.4.2}{\277Cu\341l es el riesgo de que haya costes no cuantificables en este momento, y de que aparezcan a la finalizaci\363n del proyecto, derivados de este cambio?}{subsection.1.4}% 13
+\BOOKMARK [3][-]{subsubsection.1.4.3}{\277Qu\351 gestiones deber\355as realizar si el proyecto lo est\341 desarrollando un proveedor? \277Qu\351 necesitar\355as negociar o modificar?}{subsection.1.4}% 14
+\BOOKMARK [2][-]{subsection.1.5}{Gesti\363n de Riesgos}{section.1}% 15
+\BOOKMARK [3][-]{subsubsection.1.5.1}{\277Qu\351 les pasa a los riesgos cuando existe un cambio?}{subsection.1.5}% 16
+\BOOKMARK [3][-]{subsubsection.1.5.2}{\277Podemos identificar todos los riesgos existentes con motivo del cambio?}{subsection.1.5}% 17
+\BOOKMARK [3][-]{subsubsection.1.5.3}{\277Qu\351 es un riesgo positivo?}{subsection.1.5}% 18
+\BOOKMARK [2][-]{subsection.1.6}{Gesti\363n de la Integraci\363n}{section.1}% 19
+\BOOKMARK [3][-]{subsubsection.1.6.1}{\277Qu\351 ocurrir\355a en el caso de que los procesos fundamentales del \341rea que originan el cambio no se encuentren suficientemente formalizados y consolidados?}{subsection.1.6}% 20
+\BOOKMARK [3][-]{subsubsection.1.6.2}{\277C\363mo y qu\351 argumentar\355as para convencer a la Direcci\363n de retrasar la implementaci\363n de los nuevos requerimientos propuestos?}{subsection.1.6}% 21
+\BOOKMARK [2][-]{subsection.1.7}{Gesti\363n de la calidad}{section.1}% 22
+\BOOKMARK [2][-]{subsection.1.8}{Gesti\363n de los recursos humanos}{section.1}% 23
+\BOOKMARK [2][-]{subsection.1.9}{Gesti\363n de la comunicaci\363n}{section.1}% 24
+\BOOKMARK [2][-]{subsection.1.10}{Administraci\363n de compras y contratos}{section.1}% 25
+\BOOKMARK [1][-]{section.2}{Metodolog\355as \301giles}{}% 26
+\BOOKMARK [2][-]{subsection.2.1}{\277C\363mo ser\355a el planteamiento de los cambios?}{section.2}% 27
+\BOOKMARK [2][-]{subsection.2.2}{\277Cu\341l y c\363mo ser\355a el nivel de interrelaci\363n con los clientes internos?}{section.2}% 28
+\BOOKMARK [2][-]{subsection.2.3}{\277C\363mo se llevar\355a la planificaci\363n y la gesti\363n del equipo externo de proyecto?}{section.2}% 29
+\BOOKMARK [1][-]{section.3}{Metodolog\355a Cl\341sica VS \301gil}{}% 30
+\BOOKMARK [2][-]{subsection.3.1}{\277Cu\341l habr\355as elegido y por qu\351?}{section.3}% 31
+\BOOKMARK [2][-]{subsection.3.2}{\277Podr\355a ser cualquiera de las dos?}{section.3}% 32
+\BOOKMARK [2][-]{subsection.3.3}{\277Qu\351 aspectos relativos al proyecto crees que son m\341s decisivos para la elecci\363n de una u otra metodolog\355a de gesti\363n?}{section.3}% 33
+\BOOKMARK [1][-]{section.4}{Fases del Enfoque de Implantaci\363n}{}% 34
+\BOOKMARK [2][-]{subsection.4.1}{Fases del modelo ajustado a nuestro proyecto}{section.4}% 35
+\BOOKMARK [2][-]{subsection.4.2}{CRISP-DM}{section.4}% 36

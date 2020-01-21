@@ -1,0 +1,38 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{DASgenerator}
+\RequirePackage{url}
+
+%----University of Bristol Data Access Statement generator v1.2 24/10/2016----
+%% DASgenerator.sty
+%% Copyright 2016 University of Bristol Research Data Service
+%
+% This work may be distributed and/or modified under the conditions of the LaTeX Project Public License, either version 1.3 of this license or (at your option) any later version. The latest version of this license is in http://www.latex-project.org/lppl.txt and version 1.3 or later is part of all distributions of LaTeX version 2005/12/01 or later.
+%
+% This work has the LPPL maintenance status `maintained'.
+% 
+% The Current Maintainer of this work is University of Bristol Research Data Service (data-bris@bristol.ac.uk)
+%
+% This work consists of the files DASgenerator.sty and DASgenerator.tex
+
+%Instructions:
+%Use the one of the commands below at the location in your .tex file where you would like your data access statement to appear. Note that DOIs are formatted using \url to permit non-hyphenated linebreaks.
+
+%For papers without any data or where data is provided within the text or as a supplement:
+\newcommand{\NoData}{This study did not involve any underlying data.}
+\newcommand{\Review}{This study did not generate any new data.}
+\newcommand{\DataInPaper}{Supporting data are provided within this paper.}
+\newcommand{\DataInSupplement}{Supporting data are provided as supplementary information accompanying this paper.}
+
+
+%For data published in data.bris:
+%In data.bris, datasets can be published with one of the following access arrangements depending on the nature and sensitivity of the data. Please choose the appropriate statement for your data below and use the corresponding command.
+
+% "I want my data to be freely available for download on data.bris." --> use \DataBrisOpen{#1} where #1 is the DOI you have been assigned by data.bris.
+% "I want my data record to be visible on data.bris, but bona fide researchers should register and sign an access agreement before being able to download the actual data." --> use \DataBrisRestrict{#1} where #1 is the DOI you have been assigned by data.bris.
+% "I want my data record to be visible on data.bris, but requests for access should be approved by the University's Data Access Committee." --> use \DataBrisControl{#1} where #1 is the DOI you have been assigned by data.bris.
+
+\newcommand{\DataBrisOpen}[1]{Supporting data are openly available from data.bris under the DOI: \url{#1}.}
+\newcommand{\DataBrisRestrict}[1]{Supporting data will made available to bona fide researchers subject to a data access agreement. Details of how to request access are available at the University of Bristol's data repository under the DOI: \url{#1}.}
+\newcommand{\DataBrisControl}[1]{Supporting data can only be made available to bona fide researchers subject to a data access agreement and following approval from the University of Bristol Data Access Committee. Details of how to request access are available at the University of Bristol's data repository under the DOI: \url{#1}.}
+
+%----End of Data Access Statement generator----

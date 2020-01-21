@@ -1,0 +1,1273 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={A2: Análisis Estadístico I},
+  pdfauthor={Paula Muñoz Lago},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+
+\title{A2: Análisis Estadístico I}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{Estadística Avanzada, Universitat Oberta de Catalunya}
+\author{Paula Muñoz Lago}
+\date{23 diciembre 2019}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\hypertarget{analuxedtica-descriptiva}{%
+\subsection{1. Analítica descriptiva}\label{analuxedtica-descriptiva}}
+
+\hypertarget{lectura-del-fichero}{%
+\subsubsection{1.1 Lectura del fichero}\label{lectura-del-fichero}}
+
+\emph{Leer el fichero ESTRADL\_clean.csv. Validar que los datos leídos
+son correctos. Si no es así, realizar las conversiones oportunas.}
+
+En primer lugar, realizamos la carga de datos.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{current_working_directory <-}\StringTok{ }\KeywordTok{getwd}\NormalTok{()}
+\NormalTok{data <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\KeywordTok{paste}\NormalTok{(current_working_directory,}\StringTok{"/ESTRADL_clean.csv"}\NormalTok{, }\DataTypeTok{sep =} \StringTok{""}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+Para comprobar que los datos leídos son correctos, imprimiremos sus
+clases. Veremos que la edad de la primera menarquía es de tipo numérico,
+mientras que una edad es más correcto que sea de tipo entero, por lo que
+procedemos a la conversión del tipo.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{sapply}\NormalTok{(data, class)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##        Id   Estradl    Ethnic    Entage  Numchild    Agefbo   Anykids  Agemenar 
+## "integer" "numeric"  "factor" "integer" "integer" "integer"  "factor" "numeric" 
+##       BMI       WHR      Area 
+## "numeric" "numeric"  "factor"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data}\OperatorTok{$}\NormalTok{Agemenar <-}\StringTok{ }\KeywordTok{as.integer}\NormalTok{(data}\OperatorTok{$}\NormalTok{Agemenar)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{anuxe1lisis-descriptivo-visual}{%
+\subsubsection{1.2 Análisis descriptivo
+visual}\label{anuxe1lisis-descriptivo-visual}}
+
+\emph{Representar de forma visual las variables del conjunto de datos y
+las distribuciones de sus valores. Escoged la representación más
+apropiada en cada caso.}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Anykids, Ethnic y Area}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{par}\NormalTok{( }\DataTypeTok{mfrow=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{))}
+
+\KeywordTok{barplot}\NormalTok{(}\KeywordTok{table}\NormalTok{(data}\OperatorTok{$}\NormalTok{Anykids), }\DataTypeTok{main =} \StringTok{"Anykids"}\NormalTok{)}
+
+\KeywordTok{pie}\NormalTok{(}\KeywordTok{table}\NormalTok{(data}\OperatorTok{$}\NormalTok{Ethnic), }\DataTypeTok{main =} \StringTok{"Ethnic"}\NormalTok{)}
+
+\KeywordTok{pie}\NormalTok{(}\KeywordTok{table}\NormalTok{(data}\OperatorTok{$}\NormalTok{Area), }\DataTypeTok{main=}\StringTok{"Area"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{munoz-analisis_files/figure-latex/1.2.5-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(data}\OperatorTok{$}\NormalTok{Anykids)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  No Yes 
+## 143  62
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(data}\OperatorTok{$}\NormalTok{Ethnic)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## African American        Caucasian 
+##              149               56
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(data}\OperatorTok{$}\NormalTok{Area)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Rural Urban 
+##   140    65
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Estradiol y Entage}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{par}\NormalTok{( }\DataTypeTok{mfrow=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{))}
+\KeywordTok{boxplot}\NormalTok{(data}\OperatorTok{$}\NormalTok{Estradl, }\DataTypeTok{main =} \StringTok{"Estradl"}\NormalTok{)}
+\KeywordTok{boxplot}\NormalTok{(data}\OperatorTok{$}\NormalTok{Entage, }\DataTypeTok{main =} \StringTok{"Entage"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{munoz-analisis_files/figure-latex/1.2-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(data}\OperatorTok{$}\NormalTok{Estradl)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    2.20   22.80   35.60   36.26   48.00   85.53
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(data}\OperatorTok{$}\NormalTok{Entage)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   18.00   21.00   26.00   26.05   31.00   37.00
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Agefbo y Agemenar}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{par}\NormalTok{( }\DataTypeTok{mfrow=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{))}
+\KeywordTok{hist}\NormalTok{(data}\OperatorTok{$}\NormalTok{Agefbo[}\KeywordTok{which}\NormalTok{(data}\OperatorTok{$}\NormalTok{Agefbo }\OperatorTok{>}\StringTok{ }\DecValTok{0}\NormalTok{)], }\DataTypeTok{main=}\StringTok{"Agefbo"}\NormalTok{)}
+\KeywordTok{boxplot}\NormalTok{(data}\OperatorTok{$}\NormalTok{Agemenar, }\DataTypeTok{main =} \StringTok{"Agemenar"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{munoz-analisis_files/figure-latex/1.2.4-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(data}\OperatorTok{$}\NormalTok{Agefbo)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   0.000   0.000   0.000   6.444  17.000  32.000
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(data}\OperatorTok{$}\NormalTok{Agemenar)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    9.00   11.00   12.00   12.31   13.00   16.00
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Numchild}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{hist}\NormalTok{(data}\OperatorTok{$}\NormalTok{Numchild[}\KeywordTok{which}\NormalTok{(data}\OperatorTok{$}\NormalTok{Numchild }\OperatorTok{>}\StringTok{ }\DecValTok{0}\NormalTok{)], }\DataTypeTok{main=}\StringTok{"Numchild"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{munoz-analisis_files/figure-latex/1.2.3-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(data}\OperatorTok{$}\NormalTok{Numchild)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##  0.0000  0.0000  0.0000  0.5268  1.0000  7.0000
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{BMI y WHR}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{par}\NormalTok{( }\DataTypeTok{mfrow=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{))}
+\KeywordTok{boxplot}\NormalTok{(data}\OperatorTok{$}\NormalTok{BMI, }\DataTypeTok{main =} \StringTok{"BMI"}\NormalTok{)}
+\KeywordTok{hist}\NormalTok{(data}\OperatorTok{$}\NormalTok{WHR, }\DataTypeTok{main =} \StringTok{"WHR"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{munoz-analisis_files/figure-latex/1.2.7-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(data}\OperatorTok{$}\NormalTok{BMI)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   17.72   21.63   24.72   25.91   29.60   42.24
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(data}\OperatorTok{$}\NormalTok{WHR)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##  0.6200  0.7100  0.7400  0.7596  0.8100  0.9800
+\end{verbatim}
+
+\hypertarget{edad-de-menarquuxeda-media-de-la-poblaciuxf3n}{%
+\subsection{2. Edad de menarquía media de la
+población}\label{edad-de-menarquuxeda-media-de-la-poblaciuxf3n}}
+
+\emph{A partir de los datos de la muestra, se desea estimar la edad de
+menarquia media de las mujeres. En concreto, se desea estudiar si la
+edad de menarquia media de la población es de 14 años, o bien es
+inferior a 14 años. Para ello, realizar un contraste estadístico con un
+nivel de confianza del 98 \%.}
+
+\hypertarget{hipuxf3tesis-nula-y-alternativa}{%
+\subsubsection{2.1 Hipótesis nula y
+alternativa}\label{hipuxf3tesis-nula-y-alternativa}}
+
+La hipótesis nula es de la que partimos, la indicada en el enunciado,
+mientras que la hipótesis alternativa tiene que representar un caso
+diferente, siendo así una alternativa unilateral.
+
+\[
+\left\{
+  \begin{array}{ll}
+    H_{0}: &  \mu=14\\
+    H_{1}: & \mu< 14
+  \end{array}
+\right.
+\]
+
+\hypertarget{muxe9todo}{%
+\subsubsection{2.2 Método}\label{muxe9todo}}
+
+Una vez planteadas las hipótesis, debemos tomar una decisión. Aceptar o
+rechazar H\textsubscript{0}.
+
+El nivel de significación en este caso será \(\alpha\) = 0.02. Es decir,
+podremos rechazar la hipótesis nula de forma equivocada 2 de cada 100
+veces. Se trata de una distribución normal N(\(\mu\),\(\sigma^2\)) y
+puesto que no disponemos de información sobre la varianza \(\sigma\),
+utilizaremos una distribución t-Student para aproximar una variable
+\emph{S} a \(\sigma\).
+
+\hypertarget{cuxe1lculos}{%
+\subsubsection{2.3 Cálculos}\label{cuxe1lculos}}
+
+\hypertarget{t-de-student}{%
+\paragraph{T de Student}\label{t-de-student}}
+
+Para decidir si rechazamos la hipótesis nula o no, calcularemos el
+estadístico de contraste con la siguiente formula.
+
+\[t = \frac{\bar{X} - \mu}{\frac{S}{\sqrt{n}}}\]
+
+Seguiremos la ley de t de Student con n-1 grados de libertad, dado que
+no conocemos la varianza (\(\sigma\)). Puesto que N\textgreater30, es
+decir, consideramos que el tamaño de la muestra es grande, podremos
+aproximarlo a una distribución normal.
+
+En nuestro caso, \(\mu\) = 14, n = 205 y \(\bar{X}\) = 12.3122, y, al
+desconocer \(\sigma\), debemos calcular \emph{S} (desviación típica
+muestral).
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{S}
+\end{itemize}
+
+\[S = \sqrt{\frac{1}{n}\sum_{i = 1}^{n}(x_i - \bar{x})^2} = 1.3756\]
+
+El calculo se ha realizado en R con el siguiente código:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# (xi-xmean)^2}
+\NormalTok{sum =}\StringTok{ }\DecValTok{0}
+\NormalTok{m =}\StringTok{ }\KeywordTok{mean}\NormalTok{(data}\OperatorTok{$}\NormalTok{Agemenar)}
+\ControlFlowTok{for}\NormalTok{(a }\ControlFlowTok{in}\NormalTok{ data}\OperatorTok{$}\NormalTok{Agemenar)\{}
+\NormalTok{  x =}\StringTok{ }\NormalTok{(a }\OperatorTok{-}\StringTok{ }\NormalTok{m)}\OperatorTok{^}\DecValTok{2}
+\NormalTok{  sum =}\StringTok{ }\NormalTok{sum }\OperatorTok{+}\StringTok{ }\NormalTok{x}
+\NormalTok{\}}
+\CommentTok{#sqrt}
+\NormalTok{S =}\StringTok{ }\KeywordTok{sqrt}\NormalTok{(sum }\OperatorTok{/}\StringTok{ }\NormalTok{(}\KeywordTok{length}\NormalTok{(data}\OperatorTok{$}\NormalTok{Agemenar) }\OperatorTok{-}\StringTok{ }\DecValTok{1}\NormalTok{))}
+\NormalTok{S}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1.375592
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{t}
+\end{itemize}
+
+Una vez obtenida la variable \emph{S}, procedemos a obtener t, con el
+siguiente código.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{t =}\StringTok{ }\NormalTok{(m }\OperatorTok{-}\StringTok{ }\DecValTok{14}\NormalTok{) }\OperatorTok{/}\StringTok{ }\NormalTok{(S }\OperatorTok{/}\StringTok{ }\KeywordTok{sqrt}\NormalTok{(}\KeywordTok{length}\NormalTok{(data}\OperatorTok{$}\NormalTok{Agemenar)))}
+\NormalTok{t}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -17.56749
+\end{verbatim}
+
+De esta forma, obtenemos que t = -17.56 con 204 grados de libertad
+
+\hypertarget{valor-cruxedtico}{%
+\paragraph{Valor crítico}\label{valor-cruxedtico}}
+
+El valor crítico, dado el nivel de confianza del 98\%, al ser un estudio
+unilateral, obtenemos que es:
+
+\[\mu <= \bar{X} + (t_{0.02}*\frac{S}{\sqrt{N}})\]
+\[|t_{0.02}| = 2.066964\]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{talpha =}\StringTok{ }\KeywordTok{qt}\NormalTok{(}\DataTypeTok{p=}\FloatTok{0.02}\NormalTok{, }\DataTypeTok{df =} \DecValTok{204}\NormalTok{)}
+\NormalTok{margen_error =}\StringTok{ }\NormalTok{(talpha }\OperatorTok{*}\StringTok{ }\NormalTok{S)}\OperatorTok{/}\KeywordTok{sqrt}\NormalTok{(}\DecValTok{205}\NormalTok{)}
+\NormalTok{limite_superior =}\StringTok{ }\NormalTok{m }\OperatorTok{+}\StringTok{ }\NormalTok{margen_error}
+\NormalTok{limite_inferior =}\StringTok{ }\NormalTok{m }\OperatorTok{-}\StringTok{ }\NormalTok{margen_error}
+\end{Highlighting}
+\end{Shaded}
+
+El intervalo de confianza obtenido a raíz del valor crítico es (12.1
+\textless{} \(\mu\) \textless{} 12.5).
+
+\hypertarget{p-value}{%
+\paragraph{P-value}\label{p-value}}
+
+\[P(|t_{n-1}| < t) = P(|t_{204}| < -17.56) = 1.093513*10^{-42} \simeq 0\]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p_value =}\StringTok{ }\DecValTok{2}\OperatorTok{*}\KeywordTok{pt}\NormalTok{(t, }\DataTypeTok{df =} \KeywordTok{length}\NormalTok{(data}\OperatorTok{$}\NormalTok{Agemenar) }\OperatorTok{-}\StringTok{ }\DecValTok{1}\NormalTok{)}
+\NormalTok{p_value}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1.093513e-42
+\end{verbatim}
+
+\hypertarget{interpretaciuxf3n}{%
+\subsubsection{2.4 Interpretación}\label{interpretaciuxf3n}}
+
+Rechazaremos la hipótesis nula, dado que el p-valor \textless{}
+\(\alpha\) y \(14 \not \subset {12.11, 12.51}\).
+
+\hypertarget{intervalo-de-confianza-de-estradiol}{%
+\section{3. Intervalo de confianza de
+Estradiol}\label{intervalo-de-confianza-de-estradiol}}
+
+\hypertarget{calcular-el-intervao-de-confianza-del-95-de-la-variable-estradiol}{%
+\subsection{3.1 Calcular el intervao de confianza del 95\% de la
+variable
+Estradiol}\label{calcular-el-intervao-de-confianza-del-95-de-la-variable-estradiol}}
+
+Dado que se trata de una muestra normal, el intervalo de confianza es
+aquél que se encuentra entre unos márgenes en la campana de la normal.
+Siendo la confianza del 95\%, la parte de la campana que queda fuera del
+intervalo de confianza sería un 5\% que se distribuye en dos partes, de
+2.5\% cada una.
+
+Para comenzar con los cálculos, necesitamos los siguientes datos:
+
+\(\bar{X}\) (Media del valor del estradiol en la muestra) = 36.26
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{X =}\StringTok{ }\KeywordTok{mean}\NormalTok{(data}\OperatorTok{$}\NormalTok{Estradl)}
+\NormalTok{X}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 36.26298
+\end{verbatim}
+
+S (desviación típica para una distribución de Student) =
+\(\sqrt{\frac{1}{n}\sum_{i = 1}^{n}(x_i - \bar{x_i})^2}\) = 17.46537
+
+Dado que en este ejercicio necesitaremos realizar el cálculo de S varias
+veces, crearemos una función.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{compute_S <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(vector)\{}
+  \CommentTok{# S}
+  \CommentTok{# (xi-xmean)^2}
+\NormalTok{  sum =}\StringTok{ }\DecValTok{0}
+\NormalTok{  m =}\StringTok{ }\KeywordTok{mean}\NormalTok{(vector)}
+  \ControlFlowTok{for}\NormalTok{(a }\ControlFlowTok{in}\NormalTok{ vector)\{}
+\NormalTok{    x =}\StringTok{ }\NormalTok{(a }\OperatorTok{-}\StringTok{ }\NormalTok{m)}\OperatorTok{^}\DecValTok{2}
+\NormalTok{    sum =}\StringTok{ }\NormalTok{sum }\OperatorTok{+}\StringTok{ }\NormalTok{x}
+\NormalTok{  \}}
+  \CommentTok{#1/n - 1}
+\NormalTok{  y =}\StringTok{ }\DecValTok{1} \OperatorTok{/}\StringTok{ }\NormalTok{(}\KeywordTok{length}\NormalTok{(vector) }\OperatorTok{-}\StringTok{ }\DecValTok{1}\NormalTok{)}
+  \CommentTok{#sqrt}
+\NormalTok{  S =}\StringTok{ }\KeywordTok{sqrt}\NormalTok{(sum }\OperatorTok{/}\StringTok{ }\NormalTok{(}\KeywordTok{length}\NormalTok{(vector) }\OperatorTok{-}\StringTok{ }\DecValTok{1}\NormalTok{))}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{S <-}\StringTok{ }\KeywordTok{compute_S}\NormalTok{(data}\OperatorTok{$}\NormalTok{Estradl)}
+\NormalTok{S}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 17.46537
+\end{verbatim}
+
+\(\alpha\) = 0.05 (indicado en el enunciado)
+
+Para conocer el intervalo de confianza, deberemos realizar la siguiente
+operación:
+\[ P(-|t_{n-1}| <= \frac{\bar{X} - \mu}{\frac{S}{\sqrt{n}}} <= |t_{n-1}|) = 0.95 \]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tn1 =}\StringTok{ }\KeywordTok{qt}\NormalTok{(}\DataTypeTok{p=}\NormalTok{(}\DecValTok{1} \OperatorTok{-}\StringTok{ }\FloatTok{0.95}\NormalTok{), }\DataTypeTok{df =} \DecValTok{204}\NormalTok{)}
+\NormalTok{tn1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -1.652357
+\end{verbatim}
+
+\[ P(-1.97 <= \frac{\bar{X} - \mu}{\frac{S}{\sqrt{n}}} <= 1.97) = 0.95 \]
+\[ P(\bar{X} - 1.97\frac{S}{\sqrt{n}} <= \mu <= \bar{X} + 1.97\frac{S}{\sqrt{n}}) = 0.95 \]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{margen_error =}\StringTok{ }\KeywordTok{abs}\NormalTok{((tn1 }\OperatorTok{*}\StringTok{ }\NormalTok{S)}\OperatorTok{/}\KeywordTok{sqrt}\NormalTok{(}\DecValTok{205}\NormalTok{))}
+\NormalTok{limite_superior =}\StringTok{ }\NormalTok{X }\OperatorTok{+}\StringTok{ }\NormalTok{margen_error}
+\NormalTok{limite_inferior =}\StringTok{ }\NormalTok{X }\OperatorTok{-}\StringTok{ }\NormalTok{margen_error}
+\NormalTok{limite_inferior }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 34.24737
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{limite_superior}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 38.27858
+\end{verbatim}
+
+Por tanto, obtenemos como intervalo de confianza: (34.24, 38.27).
+
+\hypertarget{interpretar-el-resultado}{%
+\subsection{3.2 Interpretar el
+resultado}\label{interpretar-el-resultado}}
+
+\emph{A partir del resultado obtenido del intervalo de confianza,
+explicar la interpretación del mismo en cuanto al valor de estradiol en
+las mujeres.}
+
+En nuestra muestra, la media de los niveles de estradiol en mujeres
+abarca desde 33.85 hasta 38.66 con una confianza del 95\%.
+
+\hypertarget{comparar-intervalos}{%
+\subsection{3.3 Comparar intervalos}\label{comparar-intervalos}}
+
+\emph{Si calculáramos el intervalo de confianza del 97 \%, ¿cómo sería
+el intervalo de confianza en relación al calculado previamente?
+Justificar la respuesta. No es necesario realizar los cálculos.}
+
+Dado que en este caso el nivel de confianza es superior, el porcentaje
+de rechazo, \(\alpha\), es inferior. \(\alpha\) = 0.03, por lo que la
+región de aceptación será mayor y los valores críticos distarán más
+entre ellos. El límite inferior será levemente menor que 33.85, como en
+el caso anterior, y el límite superior el valor crítico será ligeramente
+superior a 38.66.
+
+\hypertarget{diferencias-en-el-nivel-de-estradiol-seguxfan-etnia}{%
+\section{4. Diferencias en el nivel de estradiol según
+etnia}\label{diferencias-en-el-nivel-de-estradiol-seguxfan-etnia}}
+
+\hypertarget{hipuxf3tesis-nula-y-alternativa-1}{%
+\subsection{4.1 Hipótesis nula y
+alternativa}\label{hipuxf3tesis-nula-y-alternativa-1}}
+
+\[
+\left\{
+  \begin{array}{ll}
+    H_{0}: &  \mu_{0}=\mu_{1}\\
+    H_{1}: & \mu_{0} \neq \mu_{1}
+  \end{array}
+\right.
+\] Siendo \(\mu_{0}\) la media del nivel de estradiol en mujeres
+caucásicas y \(\mu_{1}\) en mujeres negras. Proponemos como \(H_0\) que
+las medias del nivel de estradiol en mujeres caucásicas y negras es la
+misma, y como hipótesis alternativa, que son distintas.
+
+\hypertarget{muxe9todo-1}{%
+\subsection{4.2 Método}\label{muxe9todo-1}}
+
+\emph{En función de las características de la muestra, decidir qué
+método aplicar para validar la hipótesis planteada. Para ello, debéis
+especificar como mínimo: a) si es un contraste de una muestra o de dos
+muestras (en caso de dos muestras, si éstas son independientes o están
+relacionadas), b) si podéis asumir normalidad y por qué, c) si el test
+es paramétrico o no paramétrico, d) si el test es bilateral o
+unilateral.}
+
+Se trata de un contraste bilateral entre dos muestras independientes.
+Estas muestras tienen una distribución normal, ya que los datos pueden
+organizarse en forma de campana gaussiana y podremos calcular la
+probabilidad de que varios valores ocurran en un cierto intervalo dada
+una confianza, por lo que también podemos afirmar que el que vamos a
+realizar se trata de un test paramétrico. Puesto que no conocemos la
+distribución, utilizaremos la t-student.
+
+\hypertarget{cuxe1lculos-1}{%
+\subsection{4.3 Cálculos}\label{cuxe1lculos-1}}
+
+\emph{Realizar los cálculos para validar o rechazar la hipótesis de la
+investigación, con un nivel de confianza del 95 \%. Calcular: el
+estadístico de contraste, el valor crítico y el valor p.}
+
+Dado que no conocemos la desviación típica, la calcularemos con la
+siguiente fórmula:
+\[S= \sqrt{\frac{\sum_{i = 1}^{n_{1}}(x_{i1} - \bar{x_1})^2 + \sum_{i = 1}^{n_{2}}(x_{i2} - \bar{x_2})^2}{n_{1} + n_{2} - 2}} = \sqrt{\frac{(n_{1} - 1)s_{1}^2 + (n_{2} - 1)s_{2}^2}{n_{1} + n_{2} - 2}}\]
+Para ello, necesitamos calcular los siguientes datos
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{X\textsubscript{1} y X\textsubscript{2}}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{X1 =}\StringTok{ }\KeywordTok{mean}\NormalTok{(data}\OperatorTok{$}\NormalTok{Estradl[}\KeywordTok{which}\NormalTok{(data}\OperatorTok{$}\NormalTok{Ethnic }\OperatorTok{==}\StringTok{ "Caucasian"}\NormalTok{)])}
+\NormalTok{X1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 42.99893
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{X2 =}\StringTok{ }\KeywordTok{mean}\NormalTok{(data}\OperatorTok{$}\NormalTok{Estradl[}\KeywordTok{which}\NormalTok{(data}\OperatorTok{$}\NormalTok{Ethnic }\OperatorTok{==}\StringTok{ "African American"}\NormalTok{)])}
+\NormalTok{X2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 33.73134
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{S\textsubscript{1} y S\textsubscript{2}}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{S1 <-}\StringTok{ }\KeywordTok{compute_S}\NormalTok{(data}\OperatorTok{$}\NormalTok{Estradl[}\KeywordTok{which}\NormalTok{(data}\OperatorTok{$}\NormalTok{Ethnic }\OperatorTok{==}\StringTok{ "Caucasian"}\NormalTok{)])}
+\NormalTok{S1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 18.26891
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{S2 <-}\StringTok{ }\KeywordTok{compute_S}\NormalTok{(data}\OperatorTok{$}\NormalTok{Estradl[}\KeywordTok{which}\NormalTok{(data}\OperatorTok{$}\NormalTok{Ethnic }\OperatorTok{==}\StringTok{ "African American"}\NormalTok{)])}
+\NormalTok{S2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 16.51693
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{S}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{S =}\StringTok{ }\KeywordTok{sqrt}\NormalTok{(((}\KeywordTok{length}\NormalTok{(data}\OperatorTok{$}\NormalTok{Estradl[}\KeywordTok{which}\NormalTok{(data}\OperatorTok{$}\NormalTok{Ethnic }\OperatorTok{==}\StringTok{ "Caucasian"}\NormalTok{)]) }\OperatorTok{-}\StringTok{ }\DecValTok{1}\NormalTok{) }\OperatorTok{*}\StringTok{ }\NormalTok{S1}\OperatorTok{^}\DecValTok{2} \OperatorTok{+}\StringTok{ }\NormalTok{(}\KeywordTok{length}\NormalTok{(data}\OperatorTok{$}\NormalTok{Estradl[}\KeywordTok{which}\NormalTok{(data}\OperatorTok{$}\NormalTok{Ethnic }\OperatorTok{==}\StringTok{ "African American"}\NormalTok{)]) }\OperatorTok{-}\StringTok{ }\DecValTok{1}\NormalTok{) }\OperatorTok{*}\StringTok{ }\NormalTok{S2}\OperatorTok{^}\DecValTok{2}\NormalTok{) }\OperatorTok{/}\StringTok{ }\NormalTok{(}\KeywordTok{length}\NormalTok{(data}\OperatorTok{$}\NormalTok{Estradl) }\OperatorTok{-}\StringTok{ }\DecValTok{2}\NormalTok{))}
+\NormalTok{S}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 17.00944
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{t}
+\end{itemize}
+
+Procedemos a calcular el estadístico de contraste \emph{t}, con la
+siguiente fórmula.
+\[t = \frac{\bar{X_1} - \bar{X_2}}{S\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}} = 3.47\]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{error_estandar =}\StringTok{ }\NormalTok{(S}\OperatorTok{*}\KeywordTok{sqrt}\NormalTok{((}\DecValTok{1} \OperatorTok{/}\StringTok{ }\KeywordTok{length}\NormalTok{(data}\OperatorTok{$}\NormalTok{Estradl[}\KeywordTok{which}\NormalTok{(data}\OperatorTok{$}\NormalTok{Ethnic }\OperatorTok{==}\StringTok{ "Caucasian"}\NormalTok{)])) }\OperatorTok{+}\StringTok{ }\NormalTok{(}\DecValTok{1} \OperatorTok{/}\StringTok{ }\KeywordTok{length}\NormalTok{(data}\OperatorTok{$}\NormalTok{Estradl[}\KeywordTok{which}\NormalTok{(data}\OperatorTok{$}\NormalTok{Ethnic }\OperatorTok{==}\StringTok{ "African American"}\NormalTok{)]))))}
+\NormalTok{t =}\StringTok{ }\NormalTok{(X1 }\OperatorTok{-}\StringTok{ }\NormalTok{X2) }\OperatorTok{/}\StringTok{ }\NormalTok{error_estandar}
+\NormalTok{t}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3.476057
+\end{verbatim}
+
+El valor crítico será \(t_{\alpha/2, n_1 + n_2 - 2}\) = \(\pm 1.97\)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{qt}\NormalTok{(}\DataTypeTok{p=}\FloatTok{0.025}\NormalTok{, }\DataTypeTok{df=}\DecValTok{203}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -1.971719
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Valor crítico}
+\end{itemize}
+
+A continuación, calculamos el p valor. Dado que H\textsubscript{1}
+mantiene que \(\mu_0 - \mu_1 \neq 0\), entonces el p-valor será:
+
+\[p = 2P(t_{n_1 + n_2 - 2} > |t|) = 2P(t_{203} > 3.476) = 2(1 - P(t_{203} < 3.476)) = 0.00062\]
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{P-valor}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{2}\OperatorTok{*}\NormalTok{(}\DecValTok{1} \OperatorTok{-}\StringTok{ }\KeywordTok{pt}\NormalTok{(t, }\DataTypeTok{df =} \DecValTok{203}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.0006222197
+\end{verbatim}
+
+\hypertarget{interpretar}{%
+\subsection{4.4 Interpretar}\label{interpretar}}
+
+\emph{Interpretar los resultados y concluir si se puede afirmar que
+existen diferencias significativas en el nivel de estradiol según la
+etnia.}
+
+Dado que p-valor \textless{} \(\alpha\), rechazamos la hipótesis nula y
+concluimos que la media de los niveles de estradiol en mujeres negras y
+caucásicas son diferentes.
+
+\hypertarget{nivel-de-estradiol-seguxfan-hijos}{%
+\section{5. Nivel de estradiol según
+hijos}\label{nivel-de-estradiol-seguxfan-hijos}}
+
+\emph{A continuación, se desea evaluar si existen diferencias en el
+nivel de estradiol de las mujeres según si han tenido hijos o no. Es
+decir, se podría afirmar que el nivel de estradiol es inferior en las
+mujeres que han tenido hijos, con un nivel de confianza del 95 \%? ¿Y
+con un nivel de confianza del 90 \%? Seguir los pasos que se indican a
+continuación para dar respuesta a esta hipótesis (que son análogos a la
+pregunta anteior). Recordad que se deben realizar los cálculos
+manualmente. No se pueden usar funciones de R que calculen directamente
+el contraste de hipótesis. En cambio, sí se pueden usar funciones como
+qnorm, pnorm, qt y pt.Especificad todos los pasos detalladamente e
+imprimid los resultados de las variables relevantes de este contraste,
+tal como se requiere en la sección anterior.}
+
+\hypertarget{hipuxf3tesis-nula-y-alternativa-2}{%
+\subsection{5.1 Hipótesis nula y
+alternativa}\label{hipuxf3tesis-nula-y-alternativa-2}}
+
+\[
+\left\{
+  \begin{array}{ll}
+    H_{0}: &  \mu_{0} < \mu_{1}\\
+    H_{1}: & \mu_{0} \ge \mu_{1}
+  \end{array}
+\right.
+\] Siendo \(\mu_0\) las mujeres que han tenido hijos y \(\mu_1\) las que
+no los han tenido.
+
+\hypertarget{muxe9todo-2}{%
+\subsection{5.2 Método}\label{muxe9todo-2}}
+
+Se trata de un contraste bilateral entre dos muestras independientes.
+Estas muestras tienen una distribución normal, ya que los datos pueden
+organizarse en forma de campana gaussiana y podremos calcular la
+probabilidad de que varios valores ocurran en un cierto intervalo dada
+una confianza, por lo que también podemos afirmar que se trata de un
+test paramétrico.
+
+\hypertarget{cuxe1lculo}{%
+\subsection{5.3 Cálculo}\label{cuxe1lculo}}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{X\textsubscript{1} y X\textsubscript{2}}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{X1 =}\StringTok{ }\KeywordTok{mean}\NormalTok{(data}\OperatorTok{$}\NormalTok{Estradl[}\KeywordTok{which}\NormalTok{(data}\OperatorTok{$}\NormalTok{Anykids }\OperatorTok{==}\StringTok{ "Yes"}\NormalTok{)])}
+\NormalTok{X2 =}\StringTok{ }\KeywordTok{mean}\NormalTok{(data}\OperatorTok{$}\NormalTok{Estradl[}\KeywordTok{which}\NormalTok{(data}\OperatorTok{$}\NormalTok{Anykids }\OperatorTok{==}\StringTok{ "No"}\NormalTok{)])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{S\textsubscript{1} y S\textsubscript{2}}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# S1}
+\NormalTok{S1 <-}\StringTok{ }\KeywordTok{compute_S}\NormalTok{(data}\OperatorTok{$}\NormalTok{Estradl[}\KeywordTok{which}\NormalTok{(data}\OperatorTok{$}\NormalTok{Anykids }\OperatorTok{==}\StringTok{ "Yes"}\NormalTok{)])}
+\NormalTok{S1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 17.12854
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# S2}
+\NormalTok{S2 <-}\StringTok{ }\KeywordTok{compute_S}\NormalTok{(data}\OperatorTok{$}\NormalTok{Estradl[}\KeywordTok{which}\NormalTok{(data}\OperatorTok{$}\NormalTok{Anykids }\OperatorTok{==}\StringTok{ "No"}\NormalTok{)])}
+\NormalTok{S2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 17.64934
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{S}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# S}
+\NormalTok{S =}\StringTok{ }\KeywordTok{sqrt}\NormalTok{(((}\KeywordTok{length}\NormalTok{(data}\OperatorTok{$}\NormalTok{Estradl[}\KeywordTok{which}\NormalTok{(data}\OperatorTok{$}\NormalTok{Anykids }\OperatorTok{==}\StringTok{ "Yes"}\NormalTok{)]) }\OperatorTok{-}\StringTok{ }\DecValTok{1}\NormalTok{) }\OperatorTok{*}\StringTok{ }\NormalTok{S1}\OperatorTok{^}\DecValTok{2} \OperatorTok{+}\StringTok{ }\NormalTok{(}\KeywordTok{length}\NormalTok{(data}\OperatorTok{$}\NormalTok{Estradl[}\KeywordTok{which}\NormalTok{(data}\OperatorTok{$}\NormalTok{Anykids }\OperatorTok{==}\StringTok{ "No"}\NormalTok{)]) }\OperatorTok{-}\StringTok{ }\DecValTok{1}\NormalTok{) }\OperatorTok{*}\StringTok{ }\NormalTok{S2}\OperatorTok{^}\DecValTok{2}\NormalTok{) }\OperatorTok{/}\StringTok{ }\NormalTok{(}\KeywordTok{length}\NormalTok{(data}\OperatorTok{$}\NormalTok{Estradl) }\OperatorTok{-}\StringTok{ }\DecValTok{2}\NormalTok{))}
+\NormalTok{S}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 17.49447
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{t}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# T}
+\NormalTok{error_estandar =}\StringTok{ }\NormalTok{S}\OperatorTok{*}\KeywordTok{sqrt}\NormalTok{((}\DecValTok{1} \OperatorTok{/}\StringTok{ }\KeywordTok{length}\NormalTok{(data}\OperatorTok{$}\NormalTok{Estradl[}\KeywordTok{which}\NormalTok{(data}\OperatorTok{$}\NormalTok{Anykids }\OperatorTok{==}\StringTok{ "Yes"}\NormalTok{)])) }\OperatorTok{+}\StringTok{ }\NormalTok{(}\DecValTok{1} \OperatorTok{/}\StringTok{ }\KeywordTok{length}\NormalTok{(data}\OperatorTok{$}\NormalTok{Estradl[}\KeywordTok{which}\NormalTok{(data}\OperatorTok{$}\NormalTok{Anykids }\OperatorTok{==}\StringTok{ "No"}\NormalTok{)])))}
+\NormalTok{t =}\StringTok{ }\NormalTok{(X1 }\OperatorTok{-}\StringTok{ }\NormalTok{X2) }\OperatorTok{/}\StringTok{ }\NormalTok{error_estandar}
+\NormalTok{t}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.5673649
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{P-valor}
+  \[ pvalor = P(t_{n_1 + n_2 - 2} > t) = 1 - P(t_{n_1 + n_2 - 2} < t) = 1 - P(t_{203} < t) = 0.285 \]
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{1} \OperatorTok{-}\StringTok{ }\KeywordTok{pt}\NormalTok{(t, }\DecValTok{203}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.2855466
+\end{verbatim}
+
+\hypertarget{interpretaciuxf3n-1}{%
+\subsection{5.4 Interpretación}\label{interpretaciuxf3n-1}}
+
+Tanto para un nivel de significación de \(\alpha\) = 0.05, como para
+\(\alpha\) = 0.1, aceptaremos la hipótesis nula, ya que el p-valor
+\textgreater{} \(\alpha\). Es decir, concluiremos que el nivel de
+estradiol es menor en mujeres que han tenido hijos con una confianza
+tanto del 95\% como del 90\% es menor que el nivel de estradiol de las
+que no han tenido hijos.
+
+\hypertarget{p6}{%
+\section{6. Estudio longitudinal: ¿Estradiol aumenta con los
+años?}\label{p6}}
+
+\emph{Los investigadores del estudio encontraron que existía una posible
+correlación entre la edad de las mujeres y el nivel de estradiol. Por
+ello, realizaron un estudio longitudinal con una muestra reducida de
+mujeres. En un grupo de 10 mujeres voluntarias de la muestra original,
+se midió los niveles de estradiol al cabo de 7 años. El fichero
+ESTRAD7.csv recoge esta medida. Concretamente, el fichero contiene el
+identificador de la mujer, el nivel de estradiol original y su nivel de
+estradiol medido al cabo de 7 años del estudio original. La hipótesis de
+la investigación es que estradiol aumenta con la edad. ¿Qué dicen los
+datos en relación a esta hipótesis? ¿Podemos afirmar que aumenta el
+nivel de estradiol con un nivel de confianza del 97 \%?}
+
+\hypertarget{hipuxf3tesis-nula-y-alternativa-3}{%
+\subsection{6.1 Hipótesis nula y
+alternativa}\label{hipuxf3tesis-nula-y-alternativa-3}}
+
+\[
+\left\{
+  \begin{array}{ll}
+    H_{0}: &  \mu_{0} = \mu_{1}\\
+    H_{1}: & \mu_{0} < \mu_{1}
+  \end{array}
+\right.
+\] Siendo \(\mu_0\) la media del nivel de estradiol original y \(\mu_1\)
+la media tras 7 años. La hipótesis principal indica que el nivel se
+mantiene, mientras que la alternativa sostiene que el nivel de estradiol
+aumenta con la edad.
+
+\hypertarget{asunciuxf3n-de-normalidad}{%
+\subsection{6.2 Asunción de
+normalidad}\label{asunciuxf3n-de-normalidad}}
+
+\emph{Para determinar el tipo de prueba a aplicar, se comprueba primero
+si se cumple la asunción de normalidad de los datos. Para ello, podemos
+examinar si se puede aplicar el teorema del límite central. Además, se
+puede realizar una visualización gráfica con las curvas Q-Q y aplicar el
+test de Shapiro-Wilk. En este apartado debéis realizar estas
+comprobaciones y determinar si se puede asumir normalidad. Justificar
+vuestra conclusión en base a los resultados obtenidos. }
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\KeywordTok{paste}\NormalTok{(current_working_directory,}\StringTok{"/ESTRADL7.csv"}\NormalTok{, }\DataTypeTok{sep =} \StringTok{""}\NormalTok{))}
+\NormalTok{X1 <-}\StringTok{ }\KeywordTok{mean}\NormalTok{(data}\OperatorTok{$}\NormalTok{Estrad)}
+\NormalTok{X2 <-}\StringTok{ }\KeywordTok{mean}\NormalTok{(data}\OperatorTok{$}\NormalTok{Estradl7)}
+\end{Highlighting}
+\end{Shaded}
+
+En este caso, dado que desconocemos la desviación típica de la
+población, tendremos una distribución t de Student con 6 grados de
+libertad (\(t_{6}\)). Es una desviación similar a la normal (0, 1):
+simétrica alrededor de cero. Sin embargo, su desviación típica es
+ligeramente superior que la normal, ya que los valores que toma esta
+variable están un poco más dispersos (cuanto mayor es el número de
+grados de libertad, más se acerca a la distribución normal).
+
+En este caso, podemos suponer que la media del nivel de estradiol en
+mujeres sigue una distribución normal, aunque desconocemos la desviación
+típica.
+
+\begin{itemize}
+\item
+  \textbf{Teorema del límite central}: Dicho teorema enuncia que las
+  muestras de tañano suficientemente grande, siendo n \textgreater{} 30,
+  podemos afirmar que se trata de una distribución normal. Dado que no
+  es el caso, debemos comprobar que la distribución de la variable
+  \(\frac{\bar{X} - \mu}{\frac{S}{\sqrt{n}}}\) es una normal estándar.
+\item
+  \textbf{Curvas Q-Q}:
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{qqnorm}\NormalTok{(}\DataTypeTok{y =}\NormalTok{ data}\OperatorTok{$}\NormalTok{Estrad, }\DataTypeTok{main =} \StringTok{"Normal Q-Q Plot of the original Estradiol value"}\NormalTok{)}
+\KeywordTok{qqline}\NormalTok{(}\DataTypeTok{y =}\NormalTok{ data}\OperatorTok{$}\NormalTok{Estrad)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{munoz-analisis_files/figure-latex/graphs-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{qqnorm}\NormalTok{(}\DataTypeTok{y =}\NormalTok{ data}\OperatorTok{$}\NormalTok{Estradl7, }\DataTypeTok{main =} \StringTok{"Normal Q-Q Plot of the last Estradiol value"}\NormalTok{)}
+\KeywordTok{qqline}\NormalTok{(}\DataTypeTok{y =}\NormalTok{ data}\OperatorTok{$}\NormalTok{Estradl7)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{munoz-analisis_files/figure-latex/graphs2-1.pdf}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Shapiro-Wilk}: La inspección visual no siempre es del todo
+  fiable, ya que en este caso, dada la escasa muestra, la diferencia
+  entre los puntos en el gráfico es más notable. Realizaremos un test en
+  R lamado Shapiro-Wilk para comprobar si se trata de una distribución
+  normal. Este test será positivo si el p-valor resultante es mayor que
+  0.05 convencionalmente, aunque en nuestro caso \(\alpha\) = 0.03.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{shapiro.test}\NormalTok{(data}\OperatorTok{$}\NormalTok{Estrad)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Shapiro-Wilk normality test
+## 
+## data:  data$Estrad
+## W = 0.84957, p-value = 0.05741
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{shapiro.test}\NormalTok{(data}\OperatorTok{$}\NormalTok{Estradl7)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Shapiro-Wilk normality test
+## 
+## data:  data$Estradl7
+## W = 0.83177, p-value = 0.03515
+\end{verbatim}
+
+Este test nos indica que ambas variables tienen una distribución normal,
+ya que p-value \textgreater{} \(\alpha\).
+
+\hypertarget{muxe9todo-3}{%
+\subsection{6.3 Método}\label{muxe9todo-3}}
+
+\emph{Independientemente de la conclusión obtenida en el apartado
+anterior, aplicar un test no paramétri- co a la muestra. Existen dos
+tipos de tests no paramétricos para el contraste de dos muestras: 1) el
+test de suma de rangos (también conocido como test U de Mann-Whitney) y
+2) el test de rangos y signos de Wilcoxon. Decidid cuál es el contraste
+que debe aplicarse en este caso. Debéis justificar vuestra elección. }
+
+A la hora de escoger entre los tests no-paramétricos \emph{``Suma de
+rangos (o test U)''} y \emph{``test de rangos y signos del Wilcoxon''}
+partimos de la base de que el primero establece la comparación entre
+medias de poblaciones independientes, mientras que el segundo se trata
+de un test para comparar medias entre muestras dependientes, como es
+nuestro caso. Por ello, aplicaremos el
+\href{https://www.r-bloggers.com/wilcoxon-signed-rank-test/}{\textbf{test
+de rangos y signos de Wilcoxon}}.
+
+\hypertarget{cuxe1lculo-e-interpretaciuxf3n}{%
+\subsection{6.4 Cálculo e
+Interpretación}\label{cuxe1lculo-e-interpretaciuxf3n}}
+
+\emph{Aplicad el contraste e interpretar el resultado. Podéis usar
+funciones R (no desarrolléis los cálculos en este apartado).}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{wilcox.test}\NormalTok{(data}\OperatorTok{$}\NormalTok{Estrad, data}\OperatorTok{$}\NormalTok{Estradl7, }\DataTypeTok{paired =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{alternative =} \StringTok{"l"}\NormalTok{, }\DataTypeTok{conf.level =} \FloatTok{0.97}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Wilcoxon signed rank test
+## 
+## data:  data$Estrad and data$Estradl7
+## V = 25, p-value = 0.4229
+## alternative hypothesis: true location shift is less than 0
+\end{verbatim}
+
+El resultado indica que p-value = 0.4229, el cual es mayor que el nivel
+de significación (\(\alpha\) = 0.03), por tanto aceptamos la hipótesis
+alternativa \(H_{1}\), que indica que el nivel de estradiol en mujeres
+es mayor con el paso del tiempo.
+
+\hypertarget{expicar-el-test-escogido}{%
+\subsection{6.5 Expicar el test
+escogido}\label{expicar-el-test-escogido}}
+
+\emph{Explicar brevemente cómo se calcula el test que habéis escogido en
+el apartado anterior. La explicación no debe ser en base a un código,
+sino en vuestras propias palabras. Tratad de ser claros y concisos en la
+explicación}
+
+El
+\href{https://www.r-bloggers.com/wilcoxon-signed-rank-test/}{\textbf{test
+de rangos y signos de Wilcoxon}} es una alternativa al test de t-Student
+para muestras dependientes cuando la muestra es pequeña y no puede
+asumirse normalidad.
+
+El test establece como hipótesis principal que la muestra es simétrica
+alrededor de 0, y como hipótesis alternativa que no es una muestra de
+distribución normal. A continuación calcula un valor V, que representa
+la suma de los rangos positivos de nuestra diferencia de muestras. Es
+decir, se calcula la diferencia de medias de cada mujer y sus valores
+absolutos se ordenan de menor a mayor, asignando un índice a cada valor.
+La suma de los indices de la diferencia de medias que fueron positivas
+será V y la suma de los indices negativos será V'. En nustro caso V = 25
+y V' = 30. Podemos comprobar que dichos resultados son correctos a
+través de la siguiente fórmula. \[V + V' = \frac{n(n + 1)}{2}\] Si V +
+V' \textgreater{} 20, podemos asumir que tiene una distribución normal,
+y procedemos a calcular el p-valor. \footnote{\url{https://www.statisticssolutions.com/how-to-conduct-the-wilcox-sign-test/}}
+
+\hypertarget{conclusiones}{%
+\section{7. Conclusiones}\label{conclusiones}}
+
+Para finalizar, se presenta a continuación un resumen de los conceptos
+aprendidos en esta práctica, como los pásos a seguir para realizar un
+contraste de hipótesis de dos muestras.
+
+Para realizar un contraste de hipótesis, debemos establecer una
+hipótesis nula (\(H_{0}\)) y otra alternativa (\(H_{1}\)), una de las
+cuales aceptaremos y otra rechazaremos tras el estudio. Estas hipótesis
+determinarán de si se trata de un test bilateral o unilateral. Si hay
+dos areas de rechazo, se trata de un test bilateral, mientras que si
+solo hay un valor crítico, que determina un arera de rechazo, se tratará
+de una hipótesis unilateral. En segundo lugar, estableceremos el nivel
+de significación, que se trata del error máximo que podemos asumir. Es
+decir, si el enunciado indica que debemos establecer una hipótesis con
+una confianza del 99\%, el error máximo que podemos asumir es \(\alpha\)
+= 0.01. A continuación, para estudiar si aceptamos la hipótesis nula o
+no, elaboramos el estadístico de contrase. Si no disponemos de la
+varianza, el estadístico de contraste seguirá una distribución
+t-Student. Dicha distribución aproximará la varianza (\(\sigma\)) a un
+valor \emph{S}. Asumiendo que la muestra tiene una distribución normal,
+realizaremos los cálculos pertinentes para obtener un p-valor, el cual
+determinará si aceptamos la hipótesis nula (p-valor \(\ge \alpha\)) o la
+rechazamos (aceptamos la alternativa si p-valor \textless{} \(\alpha\)).
+En el caso de los contrastes bilaterales, también podemos realizar el
+contraste de hipótesis con intervalos de confianza, es decir, dado un
+cierto valor de significación, determinamos los valores entre los que se
+encuentra el rango de aceptación de \(H_{0}\), así si el valor que
+queremos contrastar se encuentra en ese rango, aceptamos \(H_{0}\). Si
+en vez de contrastar con un valor, queremos hacerlo sobre la media,
+únicamente podremos hacerlo buscando el p-valor, sin calcular el valor
+crítico. Al igual que en el contraste de un valor, si no disponemos de
+la varianza, seguiremos una distribución t-Student. Podremos seguir los
+mismos pasos aunque no sepamos si se trata de muestras normales, siempre
+que n \textgreater{} 30. Si disponemos de valores aparejados, es decir,
+observaciones de variables diferentes que pertenecen a los mismos
+individuos, podremos obtener la diferencia para estudiar una única
+muestra.
+
+En esta práctica también hemos realizado contrastes de hipótesis sobre
+diferencia de medias poblacionales, debemos determinar en primer lugar
+si se trata de una distribución normal o no, como anteriormente. En el
+caso en el que nuestra muestra no tuviese una distribución normal,
+aplicamos el teorema del limite central, con el cual aproximaremos la
+muestra a una distribución normal para muestras grandes (n
+\textgreater{} 30). Diferenciaremos los casos en los que las medias son
+dependientes o independientes, es decir, si las observaciones
+corresponden a los mismos individuos o no. También diferenciaremos los
+casos en los que conocemos la varianza (\(\sigma\)) o no, ya que si no
+la conocemos la aproximaremos a un valor \emph{S}. Además, como
+anteriormente, podemos tomar una decisión, para hipótesis bilaterales,
+además de basándonos en el p-valor, haciendo uso del intervalo de
+confianza.
+
+Las pruebas previamente resumidas son paramétricas, ya que conocemos que
+se ajustan a una distribución normal o lo hemos asumido, si bien es
+cierto que también hemos aprendido a aplicar algunos test no
+paramétricos, que se usan cuando la distrubución de la muestra no puede
+ser asumida. Este es, por ejemplo, el
+\href{https://www.r-bloggers.com/wilcoxon-signed-rank-test/}{\textbf{test
+de rangos y signos de Wilcoxon}} utilizado el el
+\protect\hyperlink{p6}{punto 6}.
+
+\end{document}

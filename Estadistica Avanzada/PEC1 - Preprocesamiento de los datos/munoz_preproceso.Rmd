@@ -1,0 +1,276 @@
+---
+title: 'A1: Preproceso   de datos'
+subtitle: 'Estadística Avanzada, Universitat Oberta de Catalunya'
+author: 'Paula Muñoz Lago'
+date: "`r format(Sys.time(), '%d %B %Y')`"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+## 1. Carga del fichero
+El fichero de datos llamado "DataEstradiol.csv" se encuentra en la misma carpeta que el script de R, que a su vez ha sido previamente escogida como directorio de trabajo. Por lo que con los siguientes comandos obtendremos una variable de tipo data data frame, que guardaremos en la variable _data_. 
+Dado que el formato del csv que queremos cargar es el español, es decir, separado por puntos y comas, utilizaremos la función _read.csv2_.
+
+```{r load}
+current_working_directory <- getwd()
+data <- read.csv2(paste(current_working_directory,"/DataEstradiol.csv", sep = ""))
+```
+
+Para explorar el _data frame_ recién cargado, utilizaremos el siguiente código.
+
+```{r entradas}
+nrow(data) #Numero de registros
+```
+
+```{r variables}
+ncol(data) #Numero de variables
+```
+
+```{r nombres}
+colnames(data) #Nombre de las variables
+```
+
+## 2. Breve inspección de los datos
+Como resumen del apartado anterior, con la siguiente línea de código obtendremos toda la información previamente obtenida, adenñas del tipo de datos de cada variable y los primeros valores de cada una.
+
+```{r resumen}
+str(data) 
+```
+
+Sin embargo, si quisiese verse únicamente el tipo de las variables, podríamos hacerlo de la siguiente manera.
+
+```{r concreto}
+sapply(data, class)
+```
+
+## 3. Formato de las variables cuantitativas
+Explorando los datos en el apartado anterior, descubrimos que las variables cuantitativas son todas menos la que representa la Étnia (columna número 3). De esta forma creamos un array con el índice de dichas columnas y, en primer lugar, corregimos las posibles inconsistencias en el punto decimal, cambiando las comas que encontremos por puntos gracias a la función gsub.
+
+```{r cuantitativas}
+variables_cuantitativas <- c(1, 2, 4:ncol(data))
+data[, variables_cuantitativas] <- sapply(data[, variables_cuantitativas], gsub, pattern=",", replacement=".")
+```
+
+Una vez homogeneizado el sistema de representación decimal a la separación con punto, convertimos a tipo numérico todas las variables cuantitativas.
+
+```{r numeric}
+data[, variables_cuantitativas] <- sapply(data[, variables_cuantitativas], as.numeric)
+sapply(data, class)
+```
+
+Antes de continuar, será de gran utilidad normalizar el valor centinela de cada variable, por ejemplo, en _Anykids_ el valor centinela es 9, mientras que en _NumChild_ es 99. Asignaremos a cada uno el valor _NA_ (Not available), e imputaremos dichos valores perdidos en el [punto 8](#p8)
+
+```{r na}
+data$Numchild[which(data$Numchild == 9)] <- NA
+data$Agefbo[which(data$Agefbo == 99)] <- NA
+data$Anykids[which(data$Anykids == 9)] <- NA
+data$Agemenar[which(data$Agemenar == 99)] <- NA
+```
+
+## 4. Valores extremos
+
+Para detectar la presencia de valores extremos en la variable _Estradiol_, imprimimos en primer lugar la siguiente gráfica de caja para visualizar la distribución de los valores. 
+```{r estradiol}
+boxplot(data$Estradl,main="Estradiol", col="pink")
+```
+
+Podemos ver que el rango intercuartílico engloba valores desde el 25 hasta algo más de 50. Como se aprecia en la representación, existen algunos valores atípicos. Podemos descubrir cuales son de la siguiente manera.
+
+```{r tipicos}
+outliers <- sort(boxplot.stats(data$Estradl)$out)
+```
+
+Para tomar la decisión de si tenemos que eliminar los registros correspondientes a algunos de los valores atípicos previamente obtenidos, podemos, en primer lugar, informarmos de cuales son los valores que toma el Estradiol normalmente [https://www.reproduccionasistida.org/valores-hormonales-en-la-mujer/][1]. Puesto que la información plasmada en la página web indica que los valores del estradiol van desde los 27 pg/ml hasta los 161 pg/ml, consideramos que los valores 170.1 y 332.70 son erroneos. De esta forma, extraeremos en primer lugar el índice de dichos registros para a continuación eliminarlos del _data frame_.
+
+```{r eliminar}
+remove_index <- which(data$Estradl %in% tail(outliers, 2))
+data <- data[-remove_index,]
+boxplot(data$Estradl,main="Estradiol", col="pink")
+```
+
+## 5. Valores del resto de variables cuantitativas {#p5}
+Procedemos a inspeccionar el resto de variables cuantitativas en busca de algún valor anómalo
+```{r age}
+hist(data$Entage,main="Edad")
+hist(data$Numchild,main="Número de hijos")
+```
+
+La edad consta desde 10 hasta 40 años, mientras que el número de hijos desde 0 hasta 7. En estos casos, los valores atípicos pueden no estar dados por un fallo al introducir los datos, por lo que mantendremos los datos como están.
+
+En el caso de la edad del primer hijo, la mayoría de entradas contienen el dato "0", lo cual indica que no han tenido hijos, y evitaremos visualizar ese dato. Podemos ver que en algunos registros aparece que el primer hijo se tuvo a los 4, 6, y 7 años. Puesto que se trata de datos erroneos, ya que no es posible, asignaremos el valor _NA_ y los imputaremos en el [punto 8](#p8).
+
+```{r firstchild}
+boxplot(data$Agefbo[which(data$Agefbo != 0)],main="Edad del primer hijo")
+anomalias <- boxplot(data$Agefbo[which(data$Agefbo != 0)],main="Edad del primer hijo")$out
+data$Agefbo[which(data$Agefbo == 4 | data$Agefbo == 6 | data$Agefbo == 7)] <- NA
+```
+```{r firstmenar}
+boxplot(data$Agemenar,main="Edad de la primera menarquía")
+boxplot(data$Agemenar,main="Edad de la primera menarquía")$out
+```
+Los valores anómalos los corregiremos en el [punto 6](#p6).
+
+En el caso de la variable booleana _Anykids_, representa si la mujer ha tenido hijos o no, y todos sus valores se distribuyen entre el valor 0, que indica que no ha tenido hijos, y el 1, que indica lo contrario.
+```{r anykids}
+boxplot(data$Anykids,main="Tiene hijos")
+boxplot(data$Anykids,main="Tiene hijos")$out
+```
+Se puede observar que existen valores que se han introducido de forma incorrecta, y explorando los datos, nos damos cuenta de que es una inconsistencia dada al introducir los datos, ya que el valor de _Anykids_ es el mismo que el de _Numchild_. Resolveremos todas las inconsistencias vistas en este apartado en el [punto 6](#p6).
+
+```{r anykidsinconsistency}
+data[which(data$Anykids > 1), ]
+```
+
+En el caso de las variables _BMI_ y _WHI_, que corresponden a la media de adiposidad general y la media de adiposidad abdominal respectivamente, obtenemos los siguientes diagramas de cajas, en los que se muestra que hay algún outlier. Sin embargo, puesto que dichos valores atípicos no distan mucho del máximo, los tomaremos como posibles valores.
+```{r data}
+boxplot(data$BMI,main="BMI")
+boxplot(data$WHR,main="WHR")
+```
+Por último, la variable area indica 0 si es rural o 1 si es urbana.
+
+```{r aria}
+hist(data$Area, main="Area")
+```
+
+## 6. Inconsistencias {#p6}
+Las inconsistencias son errores que pueden haberse dado a causa de un fallo al introducir los datos, como puede ser que las variables _Anykids_ y _Numchild_ no estén relacionadas, indicando _Anykids_ que la mujer no tiene hijos (valor = 0), mientras que _Numchild_ indica que tiene uno o más, en cuyo caso prevalecerá el valor de _Numchild_. También puede ocurrir que la edad de la primera menarquía, _Agemenarq_, sea mayor que la edad actual, _Entage_, en cuyo caso intercambiaremos los valores. Debemos cerciorarnos también de que la edad en la que la mujer tuvo el primer hijo,  _Agefbo_, sea superior a la edad de la primera menarquía, en caso contrario, indicaremos que la edad de la primera menarquía es 0.
+
+En primer lugar, comprobamos si existe algun registro en el cual el valor de Anykids es _True_ (no es 0), mientras que el valor _Numchild_ indica que tiene menos de 1 hijo, y obtenemos que  no exite dicha excepción, por lo que también comprobaremos la contraria con el mismo resultado.
+
+```{r kids}
+which(data$Anykids > 1)
+which(data$Anykids > 0 & data$Numchild < 1)
+which(data$Anykids == 0 & data$Numchild > 0)
+```
+
+Deberemos resolver también la inconsistencia que aparece cuando el valor de _Anykids_ no es 0 o 1. Para ello, observamos los tres casos en los que ocurre la inconsistencia, dado que el valor _Anykids_ ha sido introducido de forma incorrecta, siendo este el mismo que el valor _Numchild_, y sustituimos su valor "booleano" por 1.
+
+```{r kidssolved}
+indexes <- which(data$Numchild > 0 & data$Anykids > 1)
+data[indexes,]$Anykids <- 1
+data[indexes, ]
+```
+
+A continuación, observaremos la inconsistencia dada entre las variables _EntAge_ y _Agemenarq_, que se da en un total de 9 registros.
+
+```{r intercambio}
+index <- which(data$Agemenar > data$Entage)
+data[index, ]
+real_agemenar <- data[which(data$Agemenar > data$Entage),]$Entage
+real_entage <- data[which(data$Agemenar > data$Entage),]$Agemenar
+
+data[index,]$Entage <- real_entage
+data[index,]$Agemenar <- real_agemenar
+data[index, ]
+```
+
+Finalmente, la inconsistencia entre las variables _Agefbo_ y _Agemenar_ se pueden resolver como se muestra a continuación.
+
+En primer lugar, observamos que existen registros que tienen la edad de la primera menarquía mayor que la edad del primer hijo, por lo que anularemos uno de los dos valores asignándole el valor 0, dependiendo del valor _Numchild_. Es decir, si existe dicha inconsistencia y _Numchild_ == 0, se anula la edad del primer hijo, en caso contrario, anularemos _Agemenar_.
+
+```{r inconsistencia}
+which(data$Agemenar > data$Agefbo & data$Agefbo != 0)
+# Caso 1: Numchild == 0
+which(data$Agemenar > data$Agefbo & data$Agefbo != 0 & data$Numchild == 0)
+```
+
+Podemos comprobar que todos los casos en los que se da esta inconsistencia ocurren cuando el Número de hijos es 0, por lo que anularemos, asignando el valor 0 a _Agefbo_ para dichos casos.
+
+```{r inconsistenciasolved}
+data[which(data$Agemenar > data$Agefbo & data$Agefbo != 0 & data$Numchild == 0), ]$Agefbo <- 0
+data[which(data$Agefbo > 0 & data$Numchild == 0),]$Agefbo <- 0
+```
+
+## 7. Formato de las variables cualitativas
+
+La variable cualitativa _Ethnic_ únicamente puede tomar los valores "African American" y "Caucasian". Como podemos ver en la tabla de frecuencias que se muestra a continuación, esta variable no está estandarizada.
+
+```{r ethnic}
+table(data$Ethnic)
+```
+
+Para estandarizar dicha variable, en primer lugar eliminaremos los espacios al inicio y final de cada cadena, para simplificar el ejercicio. Tenemos varias formas de proceder, buscar entre todos los datos una secuencia de caracteres común y asignar a todos los registros que encuentren dicha secuencia el valor correcto, como se ha realizado con el valor "African American", o tratar cada excepción de forma individual.
+
+```{r option1}
+data$Ethnic <- trimws(data$Ethnic)
+
+which(stringr::str_detect(data$Ethnic, "Af"))
+data[which(stringr::str_detect(data$Ethnic, "Af")), ]$Ethnic <- "African American"
+
+data[which(data$Ethnic == "Caucacian" | data$Ethnic == "Caucsian"), ]$Ethnic <- "Caucasian"
+```
+
+## 8. Imputación {#p8}
+Dados los valroes anómalos encontrados en el [punto 5](#p5), procedemos a la imputación de los mismos aplicando la técnica de los k vecinos más cercanos (siendo k = 3), únicamente con los de su misma étnia, y utilizano la distancia de Gower. 
+En primer lugar, guardamos los indices de todos los registros que contengan algún valor _NA_, que posteriormente vamos a imputar, para poder comprobar si los resultados son coherentes al final.
+
+```{r index, message=FALSE, warning=FALSE}
+na_index <- which(is.na(data$Numchild) | is.na(data$Agefbo) | is.na(data$Anykids) | is.na(data$Agemenar))
+```
+
+```{r african_american, message=FALSE, warning=FALSE}
+library(VIM)
+
+index_af <- which(data$Ethnic == "African American")
+data$Numchild[index_af] <- kNN(data[index_af,], variable = "Numchild", k = 3)$Numchild
+data$Agefbo[index_af] <- kNN(data[index_af,], variable = "Agefbo", k = 3)$Agefbo
+data$Anykids[index_af] <- kNN(data[index_af,], variable = "Anykids", k = 3)$Anykids
+data$Agemenar[index_af] <- kNN(data[index_af,], variable = "Agemenar", k = 3)$Agemenar
+```
+
+```{r caucasian, message=FALSE, warning=FALSE}
+index_ca <- which(data$Ethnic == "Caucasian")
+data$Numchild[index_ca] <- kNN(data[index_ca,], variable = "Numchild", k = 3)$Numchild
+data$Agefbo[index_ca] <- kNN(data[index_ca,], variable = "Agefbo", k = 3)$Agefbo
+data$Anykids[index_ca] <- kNN(data[index_ca,], variable = "Anykids", k = 3)$Anykids
+data$Agemenar[index_ca] <- kNN(data[index_ca,], variable = "Agemenar", k = 3)$Agemenar
+```
+
+Mostramos el resultado de los registros que previamente contenían valores _NA_.
+
+```{r solution}
+data[na_index, c(3, 4, 5, 6, 7, 8)]
+```
+
+## 9. Tabla resumen de las variables cualitativas
+
+```{r sumeth}
+table(data$Ethnic)
+```
+## 10. Tabla resumen de las variables cuantitativas
+En este punto observaremos tablas resumen de las variables cuantitativas, con medidas robustas, como puede ser la mediana o no robustas como la media, ya que es susceptible frente a _outliers_.
+
+### 10.1 Estradl
+```{r sumes}
+summary(data$Estradl)
+```
+### 10.2 Entage
+```{r sumn}
+summary(data$Entage)
+```
+### 10.3 Numchild
+```{r sumnum}
+summary(data$Numchild)
+```
+### 10.4 Agefbo
+```{r sumage}
+summary(data$Agefbo)
+```
+### 10.5 Agemenar
+```{r sumagemen}
+summary(data$Agemenar)
+```
+### 10.6 BMI
+```{r sumbmi}
+summary(data$BMI)
+```
+### 10.7 WHR
+```{r sumWHR}
+summary(data$WHR)
+```
+
+## 11. Grabar el archivo
+```{r write}
+write.csv(data, file=paste(current_working_directory,"/ESTRADL_clean.csv", sep = ""))
+```
